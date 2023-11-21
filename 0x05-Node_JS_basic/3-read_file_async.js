@@ -34,4 +34,5 @@ function countStudents(path) {
   };
   return new Promise(promise);
 }
+export default countStudents;
 module.exports = countStudents;
