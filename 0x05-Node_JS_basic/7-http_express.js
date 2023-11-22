@@ -6,17 +6,13 @@ const app = express();
 const PORT = 1245;
 const DB_FILE = process.argv.length > 2 ? process.argv[2] : "";
 
-/**
- * Counts the students in a CSV data file.
- * @param {String} dataPath The path to the CSV data file.
- */
-const countStudents = (dataPath) =>
+const countStudents = (path) =>
   new Promise((resolve, reject) => {
-    if (!dataPath) {
+    if (!path) {
       reject(new Error("Cannot load the database"));
     }
-    if (dataPath) {
-      fs.readFile(dataPath, (err, data) => {
+    if (path) {
+      fs.readFile(path, (err, data) => {
         if (err) {
           reject(new Error("Cannot load the database"));
         }

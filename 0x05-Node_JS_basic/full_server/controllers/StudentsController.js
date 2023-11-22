@@ -1,5 +1,4 @@
 /* eslint-disable */
-import readDatabase from "../utils";
 
 const VALID_MAJORS = ["CS", "SWE"];
 
@@ -10,8 +9,9 @@ class StudentsController {
     readDatabase(dataPath)
       .then((studentGroups) => {
         const responseParts = ["This is the list of our students"];
-
-        const comparisonFunction = (a, b) => {
+        // A comparison function for ordering a list of strings in ascending
+        // order by alphabetic order and case insensitive
+        const cmpFxn = (a, b) => {
           if (a[0].toLowerCase() < b[0].toLowerCase()) {
             return -1;
           }
@@ -22,7 +22,7 @@ class StudentsController {
         };
 
         for (const [field, group] of Object.entries(studentGroups).sort(
-          comparisonFunction
+          cmpFxn
         )) {
           responseParts.push(
             [
